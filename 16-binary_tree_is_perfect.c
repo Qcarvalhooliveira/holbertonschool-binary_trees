@@ -14,7 +14,19 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 		return (0);
 	}
 
-	return (binary_tree_height(tree->left) - binary_tree_height(tree->right));
+	if (binary_tree_height(tree->left) != binary_tree_height(tree->right))
+	{
+		return (0);
+	}
+	if (tree->left != NULL && !binary_tree_is_perfect(tree->left))
+	{
+		return (0);
+	}
+	if (tree->right != NULL && !binary_tree_is_perfect(tree->right))
+	{
+		return (0);
+	}
+	return (1);
 }
 /**
  * binary_tree_height - function that measures the height of a binary tree.
